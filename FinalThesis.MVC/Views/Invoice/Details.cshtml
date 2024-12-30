@@ -1,0 +1,62 @@
+﻿@model FinalThesis.MVC.ViewModels.VMInvoice
+
+@{
+    ViewData["Title"] = "Invoice Details";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card mt-4 shadow-sm" style="max-width: 800px; width: 100%; border-radius: 10px;">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Invoice Details</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">Invoice Number</dt>
+                <dd class="col-sm-8">@Model.InvoiceNumber</dd>
+
+                <dt class="col-sm-4">Invoice Date</dt>
+                <dd class="col-sm-8">@Model.InvoiceDate.ToString("dd.MM.yyyy")</dd>
+
+                <dt class="col-sm-4">Partner</dt>
+                <dd class="col-sm-8">@Model.PartnerName</dd>
+
+                <dt class="col-sm-4">Total Amount (€)</dt>
+                <dd class="col-sm-8">@Model.InvoiceAmount?.ToString("F2")</dd>
+
+                <dt class="col-sm-4">Notes</dt>
+                <dd class="col-sm-8">@Model.Notes</dd>
+            </dl>
+
+            <h4 class="mt-4">Products</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price (€)</th>
+                        <th>Discount (%)</th>
+                        <th>Total (€)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model.InvoiceProducts)
+                    {
+                        <tr>
+                            <td>@product.ProductName</td>
+                            <td>@product.Quantity</td>
+                            <td>@product.Price.ToString("F2")</td>
+                            <td>@product.Discount?.ToString("F2")</td>
+                            <td>@product.Total?.ToString("F2")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a asp-action="Edit" asp-route-id="@Model.IDInvoice" class="btn btn-warning">Edit</a>
+                <a asp-action="Delete" asp-route-id="@Model.IDInvoice" class="btn btn-danger">Delete</a>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

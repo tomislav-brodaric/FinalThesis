@@ -1,0 +1,28 @@
+﻿@model FinalThesis.MVC.ViewModels.VMPDVExemption
+
+@{
+    ViewData["Title"] = "PDV Exemption Details";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card mt-4 shadow-sm" style="max-width: 600px; width: 100%; border-radius: 10px;">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">@Html.DisplayFor(model => model.ClauseCode)</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.ClauseName)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.ClauseName)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Basis.BasisName)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Basis.BasisName)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.ClauseText)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.ClauseText)</dd>
+            </dl>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

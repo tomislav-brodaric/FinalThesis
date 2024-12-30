@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model FinalThesis.MVC.ViewModels.VMCity
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = @Localizer["Delete"];
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="max-width: 600px; width: 100%;">
+        <div class="card-header bg-danger text-white">
+            <h4>@Localizer["AreYouSure"]</h4>
+        </div>
+        <div class="card-body">
+            <h3>@Html.DisplayFor(model => model.CityName)</h3>
+            <div class="p-3 border rounded">
+                <dl class="row">
+                    <dt class="col-sm-7">@Localizer["CityTaxCode"]:</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.DisplayCityTaxCode)</dd>
+                    <dt class="col-sm-7">@Localizer["LowerTaxRate"]:</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.DisplayLowerTaxRate)</dd>
+                    <dt class="col-sm-7">@Localizer["HigherTaxRate"]:</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.DisplayHigherTaxRate)</dd>
+                    <dt class="col-sm-7">@Localizer["IBANForTax"]:</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.DisplayIbanForTax)</dd>
+                    <dt class="col-sm-7">@Localizer["ZipCode"]:</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.DisplayZipCode)</dd>
+                    <dt class="col-sm-7">@Localizer["DistFromHQ"]:</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.DisplayDistanceInKilometres)</dd>
+                    <dt class="col-sm-7">@Localizer["LocalTaxRate"]:</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.DisplayLocalTaxRate)</dd>
+                </dl>
+            </div>
+            <form asp-action="Delete" class="d-flex justify-content-between mt-3">
+                <input type="hidden" asp-for="IDCity" />
+                <a asp-action="Index" class="btn btn-secondary">@Localizer["BackToList"]</a>
+                <input type="submit" value="@Localizer["Delete"]" class="btn btn-danger" />
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model FinalThesis.MVC.ViewModels.VMCurrency
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = @Localizer["CurrencyDetails"];
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card mt-4 shadow-sm" style="max-width: 600px; width: 100%; border-radius: 10px;">
+        <div class="card-header bg-primary text-white" style="border-radius 10px 10px 0 0;">
+            <h3 class="mb-0">@Html.DisplayFor(model => model.CurrencyName)</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">@Localizer["Code"]</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.CurrencyCode)</dd>
+
+                <dt class="col-sm-4">@Localizer["Symbol"]</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Symbol)</dd>
+
+                <dt class="col-sm-4">@Localizer["NameHr"]</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.CurrencyNameHr)</dd>
+            </dl>
+
+            <div class="mt-4">
+                <h4>@Localizer["CountriesUsingCurrency"]</h4>
+                @if (Model.CountriesUsingCurrency != null && Model.CountriesUsingCurrency.Any())
+                {
+                    <ul class="list-group">
+                        @foreach (var country in Model.CountriesUsingCurrency)
+                        {
+                            <li class="list-group-item">@country</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p>@Localizer["NoCountries"]</p>
+                }
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-secondary">@Localizer["BackToList"]</a>
+        </div>
+    </div>
+</div>

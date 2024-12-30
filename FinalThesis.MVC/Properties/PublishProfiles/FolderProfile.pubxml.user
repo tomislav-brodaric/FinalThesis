@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.MVC\bin\Release\net8.0\publish\</_PublishTargetUrl>
+    <History>True|2024-10-11T18:14:53.6355717Z||;False|2024-10-11T20:14:10.7571313+02:00||;False|2024-10-11T20:12:45.2488724+02:00||;False|2024-10-11T20:12:26.4329427+02:00||;False|2024-10-11T20:09:30.8169521+02:00||;False|2024-10-11T20:09:05.5509261+02:00||;</History>
+    <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>server=.%3bDatabase=FinalThesis%3bUser=sa%3bPassword=SQL%3bTrustServerCertificate=True%3bMultipleActiveResultSets=true</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

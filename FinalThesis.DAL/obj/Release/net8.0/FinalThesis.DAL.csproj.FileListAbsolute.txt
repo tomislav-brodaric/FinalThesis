@@ -1,0 +1,14 @@
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\bin\Release\net8.0\FinalThesis.DAL.deps.json
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\bin\Release\net8.0\FinalThesis.DAL.runtimeconfig.json
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\bin\Release\net8.0\FinalThesis.DAL.dll
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\bin\Release\net8.0\FinalThesis.DAL.pdb
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\obj\Release\net8.0\FinalThesis.DAL.csproj.AssemblyReference.cache
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\obj\Release\net8.0\FinalThesis.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\obj\Release\net8.0\FinalThesis.DAL.AssemblyInfoInputs.cache
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\obj\Release\net8.0\FinalThesis.DAL.AssemblyInfo.cs
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\obj\Release\net8.0\FinalThesis.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\obj\Release\net8.0\FinalThesis.DAL.dll
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\obj\Release\net8.0\refint\FinalThesis.DAL.dll
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\obj\Release\net8.0\FinalThesis.DAL.pdb
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\obj\Release\net8.0\FinalThesis.DAL.genruntimeconfig.cache
+C:\Users\Tomi\Desktop\Final thesis\FinalThesis\FinalThesis.DAL\obj\Release\net8.0\ref\FinalThesis.DAL.dll

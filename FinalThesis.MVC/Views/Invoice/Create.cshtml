@@ -1,0 +1,124 @@
+﻿@model FinalThesis.MVC.ViewModels.VMInvoice
+
+@{
+    ViewData["Title"] = "Create Invoice";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card mt-4 shadow-sm" style="max-width: 800px; width: 100%; border-radius: 10px;">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Create Invoice</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="InvoiceNumber" class="form-label"></label>
+                    <input asp-for="InvoiceNumber" class="form-control" />
+                    <span asp-validation-for="InvoiceNumber" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="InvoiceDate" class="form-label"></label>
+                    <input asp-for="InvoiceDate" class="form-control" type="date" />
+                    <span asp-validation-for="InvoiceDate" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PartnerID" class="form-label"></label>
+                    <select asp-for="PartnerID" asp-items="ViewBag.PartnerSelectList" class="form-select"></select>
+                    <span asp-validation-for="PartnerID" class="text-danger"></span>
+                </div>
+
+                <h4 class="mt-4">Products</h4>
+                <table class="table" id="productTable">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price (€)</th>
+                            <th>Discount (%)</th>
+                            <th>Total (€)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+                <div class="mb-3 text-end">
+                    <label asp-for="InvoiceAmount" class="form-label"><strong>Total Invoice Amount (€):</strong></label>
+                    <input asp-for="InvoiceAmount" class="form-control text-end" readonly />
+                </div>
+
+                <button type="button" class="btn btn-secondary mb-3" id="addProductRow">Add Product</button>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            function calculateTotal(row) {
+                const quantity = parseFloat(row.find('input[name$=".Quantity"]').val()) || 0;
+                const price = parseFloat(row.find('input[name$=".Price"]').val()) || 0;
+                const discount = parseFloat(row.find('input[name$=".Discount"]').val()) || 0;
+
+                const total = (quantity * price) * (1 - discount / 100);
+                row.find('input[name$=".Total"]').val(total.toFixed(2));
+            }
+
+            function calculateGrandTotal() {
+                let grandTotal = 0;
+                $('#productTable tbody tr').each(function () {
+                    const total = parseFloat($(this).find('input[name$=".Total"]').val()) || 0;
+                    grandTotal += total;
+                });
+                $('#InvoiceAmount').val(grandTotal.toFixed(2));
+            }
+
+            function addNewProductRow(product = {}) {
+                const index = $('#productTable tbody tr').length; 
+                const rowHtml = `
+                    <tr>
+                        <td>
+                            <select name="InvoiceProducts[${index}].ProductID" class="form-select">
+                                @foreach (var item in ViewBag.ProductSelectList)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                        </td>
+                        <td><input type="number" name="InvoiceProducts[${index}].Quantity" class="form-control" value="${product.Quantity || ''}" /></td>
+                        <td><input type="number" name="InvoiceProducts[${index}].Price" class="form-control" value="${product.Price || ''}" /></td>
+                        <td><input type="number" name="InvoiceProducts[${index}].Discount" class="form-control" value="${product.Discount || ''}" /></td>
+                        <td><input type="number" name="InvoiceProducts[${index}].Total" class="form-control" value="${product.Total || ''}" readonly /></td>
+                        <td><button type="button" class="btn btn-danger removeProduct">Remove</button></td>
+                    </tr>`;
+                $('#productTable tbody').append(rowHtml);
+            }
+
+            $('#addProductRow').on('click', function () {
+                addNewProductRow();
+            });
+
+            $(document).on('click', '.removeProduct', function () {
+                $(this).closest('tr').remove();
+                calculateGrandTotal();
+            });
+
+            $(document).on('input', 'input[name$=".Quantity"], input[name$=".Price"], input[name$=".Discount"]', function () {
+                const row = $(this).closest('tr');
+                calculateTotal(row);
+                calculateGrandTotal();
+            });
+        });
+    </script>
+}

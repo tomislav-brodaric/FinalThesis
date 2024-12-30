@@ -1,0 +1,60 @@
+﻿@model FinalThesis.MVC.ViewModels.VMProductGroup
+
+@{
+    ViewData["Title"] = "Edit product group";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="max-width: 600px; width: 100%;">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Editing Product Group</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <input type="hidden" asp-for="IDProductGroup" />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label asp-for="GroupCode" class="form-label"></label>
+                            <input asp-for="GroupCode" class="form-control" placeholder="e.g., GRP123" />
+                            <span asp-validation-for="GroupCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label asp-for="GroupName" class="form-label"></label>
+                            <input asp-for="GroupName" class="form-control" placeholder="e.g., Group Name" />
+                            <span asp-validation-for="GroupName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ProductTypeID" class="form-label">Product Type</label>
+                    <select asp-for="ProductTypeID" class="form-select" asp-items="ViewBag.ProductTypeList">
+                        <option value="">Select Product Type</option>
+                    </select>
+                    <span asp-validation-for="ProductTypeID" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Note" class="form-label"></label>
+                    <textarea asp-for="Note" class="form-control" rows="3" placeholder="Additional notes"></textarea>
+                    <span asp-validation-for="Note" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Back to list</a>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

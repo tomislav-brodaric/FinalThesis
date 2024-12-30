@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model FinalThesis.MVC.ViewModels.VMBank
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = @Localizer["EditBank"];
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="max-width: 600px; width: 100%;">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">@Localizer["EditingBank"]</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <input asp-for="IDBank" type="hidden" />
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["BankName"]</label>
+                    <input asp-for="BankName" class="form-control" />
+                    <span asp-validation-for="BankName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["BankAddress"]</label>
+                    <input asp-for="BankAddress" class="form-control" />
+                    <span asp-validation-for="BankAddress" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["BankOIB"]</label>
+                    <input asp-for="BankOib" class="form-control w-50" maxlength="11" placeholder="e.g., 12345678901" />
+                    <span asp-validation-for="BankOib" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="IBAN" class="form-label"></label>
+                    <input asp-for="IBAN" class="form-control" placeholder="e.g., HR1210010051778912" />
+                    <span asp-validation-for="IBAN" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Swift" class="form-label"></label>
+                    <input asp-for="Swift" class="form-control w-50" placeholder="e.g., ABCDHR2X" />
+                    <span asp-validation-for="Swift" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">@Localizer["BackToList"]</a>
+                    <button type="submit" class="btn btn-primary">@Localizer["SaveChanges"]</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

@@ -1,0 +1,91 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model FinalThesis.MVC.ViewModels.VMCountry
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = @Localizer["EditCountry"];
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="max-width: 600px; width: 100%;">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">@Localizer["EditingCountry"]</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <input asp-for="IDCountry" type="hidden" />
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["CountryName"]</label>
+                    <input asp-for="ShortNameHr" class="form-control" />
+                    <span asp-validation-for="ShortNameHr" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["OfficialName"]</label>
+                    <input asp-for="OfficialNameHr" class="form-control" />
+                    <span asp-validation-for="OfficialNameHr" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["CountryNameEng"]</label>
+                    <input asp-for="ShortNameEn" class="form-control" />
+                    <span asp-validation-for="ShortNameEn" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["OfficialNameEng"]</label>
+                    <input asp-for="OfficialNameEn" class="form-control" />
+                    <span asp-validation-for="OfficialNameEn" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label">@Localizer["TwoLettersCode"]</label>
+                            <input asp-for="TwoLetterCode" class="form-control" />
+                            <span asp-validation-for="TwoLetterCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label">@Localizer["ThreeLettersCode"]</label>
+                            <input asp-for="ThreeLetterCode" class="form-control" />
+                            <span asp-validation-for="ThreeLetterCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-center">
+                        <div class="form-check ms-3 mt-3">
+                            <input asp-for="IsEUmember" class="form-check-input" />
+                            <label asp-for="IsEUmember" class="form-check-label"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["NumericCode"]</label>
+                    <input asp-for="NumericCode" class="form-control w-25" type="number" />
+                    <span asp-validation-for="NumericCode" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["Note"]</label>
+                    <input asp-for="Note" class="form-control" />
+                    <span asp-validation-for="Note" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">@Localizer["BackToList"]</a>
+                    <button type="submit" class="btn btn-primary">@Localizer["SaveChanges"]</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

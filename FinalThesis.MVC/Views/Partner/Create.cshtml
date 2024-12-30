@@ -1,0 +1,265 @@
+﻿@model FinalThesis.MVC.ViewModels.VMPartner
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="max-width: 900px; width: 100%;">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Adding partner</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="PartnerName" class="form-label"></label>
+                    <input asp-for="PartnerName" class="form-control" />
+                    <span asp-validation-for="PartnerName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="CountryID" class="form-label"></label>
+                    <select asp-for="CountryID" class="form-select" asp-items="ViewBag.Countries"></select>
+                    <span asp-validation-for="CountryID" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PartnerTypeID" class="form-label"></label>
+                    <select asp-for="PartnerTypeID" class="form-select" asp-items="ViewBag.PartnerTypes"></select>
+                    <span asp-validation-for="PartnerTypeID" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Note" class="form-label"></label>
+                    <input asp-for="Note" class="form-control" />
+                    <span asp-validation-for="Note" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="IDCity" class="form-label"></label>
+                    <select asp-for="IDCity" class="form-select" asp-items="ViewBag.Cities"></select>
+                    <span asp-validation-for="IDCity" class="text-danger"></span>
+                </div>
+
+               <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="AddressStreet" class="form-label"></label>
+                        <input asp-for="AddressStreet" class="form-control" />
+                        <span asp-validation-for="AddressStreet" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="AddressNumber" class="form-label"></label>
+                        <input asp-for="AddressNumber" class="form-control" />
+                        <span asp-validation-for="AddressNumber" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="BillingCityID" class="control-label"></label>
+                    <select asp-for="BillingCityID" class="form-control" asp-items="ViewBag.Cities"></select>
+                    <span asp-validation-for="BillingCityID" class="text-danger"></span>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="BillingStreet" class="form-label"></label>
+                        <input asp-for="BillingStreet" class="form-control" />
+                        <span asp-validation-for="BillingStreet" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="BillingNumber" class="form-label"></label>
+                        <input asp-for="BillingNumber" class="form-control" />
+                        <span asp-validation-for="BillingNumber" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Phone" class="form-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Fax" class="form-label"></label>
+                        <input asp-for="Fax" class="form-control" />
+                        <span asp-validation-for="Fax" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Mobile" class="form-label"></label>
+                        <input asp-for="Mobile" class="form-control" />
+                        <span asp-validation-for="Mobile" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="WebAddress" class="form-label"></label>
+                        <input asp-for="WebAddress" class="form-control" />
+                        <span asp-validation-for="WebAddress" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="IBAN" class="form-label"></label>
+                        <input asp-for="IBAN" class="form-control" />
+                        <span asp-validation-for="IBAN" class="text-danger"></span>
+                    </div>
+                </div>
+
+                 <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="ParentGLN" class="form-label"></label>
+                        <input asp-for="ParentGLN" class="form-control" />
+                        <span asp-validation-for="ParentGLN" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="BranchGLN" class="form-label"></label>
+                        <input asp-for="BranchGLN" class="form-control" />
+                        <span asp-validation-for="BranchGLN" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="BranchCode" class="control-label"></label>
+                    <input asp-for="BranchCode" class="form-control" />
+                    <span asp-validation-for="BranchCode" class="text-danger"></span>
+                </div>
+
+               <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="TaxNumberTypeID" class="form-label"></label>
+                        <select asp-for="TaxNumberTypeID" class="form-select" asp-items="ViewBag.TaxNumberTypes"></select>
+                        <span asp-validation-for="TaxNumberTypeID" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="VATPaymentMethodID" class="form-label"></label>
+                        <select asp-for="VATPaymentMethodID" class="form-select" asp-items="ViewBag.VATPaymentMethods"></select>
+                        <span asp-validation-for="VATPaymentMethodID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="ConnectionTypeID" class="form-label"></label>
+                        <select asp-for="ConnectionTypeID" class="form-select" asp-items="ViewBag.ConnectionTypes"></select>
+                        <span asp-validation-for="ConnectionTypeID" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="PriceListTypeID" class="form-label"></label>
+                        <select asp-for="PriceListTypeID" class="form-select" asp-items="ViewBag.PriceListTypes"></select>
+                        <span asp-validation-for="PriceListTypeID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Discount" class="form-label"></label>
+                        <input asp-for="Discount" class="form-control" />
+                        <span asp-validation-for="Discount" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="PaymentTerms" class="form-label"></label>
+                        <input asp-for="PaymentTerms" class="form-control" />
+                        <span asp-validation-for="PaymentTerms" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <h4 class="mt-4">Contacts</h4>
+                <table class="table" id="contactsTable">
+                    <thead>
+                        <tr>
+                            <th>Ime</th>
+                            <th>Prezime</th>
+                            <th>Odjel / funkcija</th>
+                            <th>Telefon</th>
+                            <th>Fax</th>
+                            <th>Email</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+                <button type="button" class="btn btn-secondary mb-3" id="addContactRow">Add Contact</button>
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            function addNewContactRow(contact = {}) {
+                const rowHtml = `
+                    <tr>
+                        <td><input type="text" name="Contacts[0].FirstName" class="form-control" value="${contact.FirstName || ''}" required /></td>
+                        <td><input type="text" name="Contacts[0].LastName" class="form-control" value="${contact.LastName || ''}" required /></td>
+                        <td><input type="text" name="Contacts[0].Department" class="form-control" value="${contact.Department || ''}" /></td>
+                        <td><input type="text" name="Contacts[0].Phone" class="form-control" value="${contact.Phone || ''}" required /></td>
+                        <td><input type="text" name="Contacts[0].Fax" class="form-control" value="${contact.Fax || ''}" /></td>
+                        <td><input type="email" name="Contacts[0].Email" class="form-control" value="${contact.Email || ''}" required /></td>
+                        <input type="hidden" name="Contacts[0].IDContact" value="${contact.IDContact || 0}" />
+                        <td><button type="button" class="btn btn-danger removeContact">Remove</button></td>
+                    </tr>`;
+
+                $('#contactsTable tbody').append(rowHtml);
+                updateContactIndex();
+            }
+
+            const contacts = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Contacts));
+            contacts.forEach(contact => addNewContactRow(contact));
+
+            $('#addContactRow').on('click', function () {
+                addNewContactRow();
+            });
+
+            $(document).on('click', '.removeContact', function () {
+                $(this).closest('tr').remove();
+                updateContactIndex();
+            });
+
+            function updateContactIndex() {
+                $('#contactsTable tbody tr').each(function (index) {
+                    $(this).find('input').each(function () {
+                        var name = $(this).attr('name').replace(/\d+/g, index);
+                        $(this).attr('name', name);
+                    });
+                });
+            }
+
+            $(document).on('keydown', 'input', function (e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    var currentRow = $(this).closest('tr');
+
+                    var allFilled = true;
+                    currentRow.find('input[required]').each(function () {
+                        if (!$(this).val()) {
+                            allFilled = false;
+                            $(this).addClass('is-invalid');
+                        } else {
+                            $(this).removeClass('is-invalid');
+                        }
+                    });
+
+                    if (allFilled) {
+                        addNewContactRow();
+                        $('#contactsTable tbody tr:last-child input').first().focus();
+                    }
+                }
+            });
+        });
+    </script>
+}

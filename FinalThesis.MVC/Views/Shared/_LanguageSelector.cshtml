@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+
+    var currentCulture = requestCulture?.RequestCulture.Culture.Name;
+}
+
+<style>
+    .language-selector
+    {
+        position: relative;
+        left: -50px;
+        width: auto;
+    }
+
+</style>
+
+<form id="selectLanguage" asp-controller="Home" asp-action="SetLanguage" method="post" class="form-inline">
+    <select name="culture" onchange="this.form.submit();" class="form-control language-selector">
+        @if (currentCulture == "en-US")
+        {
+            <option value="en-US" selected>@Localizer["English"]</option>
+        }
+
+        else
+        {
+            <option value="en-US">@Localizer["English"]</option>
+        }
+
+        @if (currentCulture == "hr-HR")
+        {
+            <option value="hr-HR" selected>@Localizer["Croatian"]</option>
+        }
+
+        else
+        {
+            <option value="hr-HR">@Localizer["Croatian"]</option>
+        }
+    </select>
+    <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+</form>

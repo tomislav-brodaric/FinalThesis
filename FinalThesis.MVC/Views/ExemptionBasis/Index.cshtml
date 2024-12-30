@@ -1,0 +1,70 @@
+﻿@model IEnumerable<FinalThesis.MVC.ViewModels.VMExemptionBasis>
+
+@{
+    ViewData["Title"] = "Exemption bases";
+}
+
+<style>
+    .clickable-row:hover {
+        background-color: #e0f7fa;
+        cursor: pointer;
+    }
+
+    .focused-row {
+        background-color: #b3e5fc !important;
+    }
+
+    table.table th, table.table td {
+        padding: 10px 5px;
+        text-align: left;
+    }
+</style>
+
+<h1>Exemption Bases</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add exemption basis</a>
+</p>
+
+<table id="sortableTable" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.BasisName)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr data-id="@item.IDBasis" class="clickable-row">
+                <td>@Html.DisplayFor(modelItem => item.BasisName)</td>
+                <td class="text-center">
+                    <a data-bs-toggle="tooltip" title="Edit"
+                       asp-action="Edit" asp-route-id="@item.IDBasis"><i class="fa-solid fa-pen"></i></a> |
+                    <a data-bs-toggle="tooltip" title="Delete"
+                       asp-action="Delete" asp-route-id="@item.IDBasis"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var table = $('#sortableTable').DataTable({
+                colReorder: true,
+                paging: true,
+                searching: true,
+                info: true,
+                ordering: true,
+                autoWidth: true
+            });
+
+            $('#sortableTable tbody').on('click', '.clickable-row', function (e) {
+                var id = $(this).data("id");
+                window.location.href = '/ExemptionBasis/Details/' + id;
+            });
+        });
+    </script>
+}

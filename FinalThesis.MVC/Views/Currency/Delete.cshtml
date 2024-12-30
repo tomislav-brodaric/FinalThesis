@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model FinalThesis.MVC.ViewModels.VMCurrency
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = @Localizer["DeletingCurrency"];
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="max-width: 600px; width: 100%;">
+        <div class="card-header bg-danger text-white">
+            <h4>@Localizer["AreYouSure"]</h4>
+        </div>
+        <div class="card-body">
+            <h3>@Html.DisplayFor(model => model.CurrencyName)</h3>
+            <div class="p-3 border rounded">
+                <dl class="row">
+                    <dt class="col-sm-7">@Localizer["Code"]:</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.CurrencyCode)</dd>
+
+                    <dt class="col-sm-7">@Localizer["Symbol"]:</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.Symbol)</dd>
+
+                    <dt class="col-sm-7">@Localizer["NameHr"]:</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.CurrencyNameHr)</dd>
+                </dl>
+            </div>
+            <form asp-action="Delete" class="d-flex justify-content-between mt-3">
+                <input type="hidden" asp-for="IDCurrency" />
+                <a asp-action="Index" class="btn btn-secondary">@Localizer["BackToList"]</a>
+                <input type="submit" value="@Localizer["Delete"]" class="btn btn-danger" />
+            </form>
+        </div>
+    </div>
+</div>

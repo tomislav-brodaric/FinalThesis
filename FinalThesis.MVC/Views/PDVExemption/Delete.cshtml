@@ -1,0 +1,33 @@
+﻿@model FinalThesis.MVC.ViewModels.VMPDVExemption
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="max-width: 600px; width: 100%;">
+        <div class="card-header bg-danger text-white">
+            <h4>Are you sure you want to delete this PDV Exemption?</h4>
+        </div>
+        <div class="card-body">
+            <h3>@Html.DisplayFor(model => model.ClauseCode)</h3>
+            <div class="p-3 border rounded">
+                <dl class="row">
+                    <dt class="col-sm-7">@Html.DisplayNameFor(model => model.ClauseName):</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.ClauseName)</dd>
+
+                    <dt class="col-sm-7">@Html.DisplayNameFor(model => model.Basis.BasisName):</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.Basis.BasisName)</dd>
+
+                    <dt class="col-sm-7">@Html.DisplayNameFor(model => model.ClauseText):</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.ClauseText)</dd>
+                </dl>
+            </div>
+            <form asp-action="Delete" class="d-flex justify-content-between mt-3">
+                <input type="hidden" asp-for="IDExemption" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </form>
+        </div>
+    </div>
+</div>

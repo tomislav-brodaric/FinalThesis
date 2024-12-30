@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model FinalThesis.MVC.ViewModels.VMGiroAccount
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = @Localizer["AddingNewGiroAccount"];
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="max-width: 600px; width: 100%;">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">@Localizer["AddingGiroAccount"]</h3>
+        </div>
+        <div class="card-body">
+            @if (ViewBag.Errors != null && ViewBag.Errors.Count > 0)
+            {
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach (var error in ViewBag.Errors)
+                        {
+                            <li>@error</li>
+                        }
+                    </ul>
+                </div>
+            }
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["AccountName"]</label>
+                    <input asp-for="AccountName" class="form-control" placeholder="Enter account name" />
+                    <span asp-validation-for="AccountName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Iban" class="form-label"></label>
+                    <input asp-for="Iban" class="form-control" placeholder="e.g., HR1210010051778912" />
+                    <span asp-validation-for="Iban" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["Bank"]</label>
+                    <select asp-for="IDBank" class="form-select" asp-items="ViewBag.BankList"></select>
+                    <span asp-validation-for="IDBank" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">@Localizer["BackToList"]</a>
+                    <button type="submit" class="btn btn-primary">@Localizer["Add"]</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+

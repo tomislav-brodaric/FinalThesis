@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model FinalThesis.MVC.ViewModels.VMCurrency
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = @Localizer["AddingNewCurrency"];
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="max-width: 600px; width: 100%;">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">@Localizer["AddingCurrency"]</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label aclass="form-label">@Localizer["Name"]</label>
+                    <input asp-for="CurrencyName" class="form-control" />
+                    <span asp-validation-for="CurrencyName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["Code"]</label>
+                    <input asp-for="CurrencyCode" class="form-control w-25" maxlength="3" placeholder="e.g., USD" />
+                    <span asp-validation-for="CurrencyCode" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["Symbol"]</label>
+                    <input asp-for="Symbol" class="form-control w-50" placeholder="e.g., $" />
+                    <span asp-validation-for="Symbol" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["NameHr"]</label>
+                    <input asp-for="CurrencyNameHr" class="form-control" />
+                    <span asp-validation-for="CurrencyNameHr" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">@Localizer["BackToList"]</a>
+                    <button type="submit" class="btn btn-primary">@Localizer["Add"]</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

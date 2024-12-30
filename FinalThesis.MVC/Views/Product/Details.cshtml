@@ -1,0 +1,101 @@
+﻿@model FinalThesis.MVC.ViewModels.VMProduct
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card mt-4 shadow-sm" style="max-width: 600px; width: 100%; border-radius: 10px;">
+        <div class="card-header bg-primary text-white" style="border-radius 10px 10px 0 0;">
+            <h3 class="mb-0">@Html.DisplayFor(model => model.ProductName)</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.ProductCode)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.ProductCode)</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.UnitOfMeasure)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.UnitOfMeasure)</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.AdditionalCode)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.AdditionalCode)</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.Dimensions)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.Dimensions)</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.Weight)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.Weight) kg</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.Manufacturer)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.Manufacturer)</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.ProductDescription)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.ProductDescription)</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.Price)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.Price) €</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.PriceWithVat)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.PriceWithVat) €</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.AllowancePercentage)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.AllowancePercentage) %</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.PriceInForeignCurrency)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.PriceInForeignCurrency)</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.AdditionalPriceA)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.AdditionalPriceA) €</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.AdditionalPriceB)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.AdditionalPriceB) €</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.AdditionalPriceC)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.AdditionalPriceC) €</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.AdditionalPriceD)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.AdditionalPriceD) €</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.BaseMeasurementUnit)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.BaseMeasurementUnit)</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.Index)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.Index)</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.BaseUnitPrice)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.BaseUnitPrice) €</dd>
+
+                <dt class="col-sm-6">@Html.DisplayNameFor(model => model.Note)</dt>
+                <dd class="col-sm-6">@Html.DisplayFor(model => model.Note)</dd>
+
+                @if (Model.ProductGroup != null)
+                {
+                        <div class="mt-4">
+                            <h4>Product Group Information</h4>
+                            <dl class="row">
+                                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.ProductGroup.GroupName)</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.ProductGroup.GroupName)</dd>
+                            </dl>
+                        </div>
+                }
+
+                @if (Model.TaxNumber != null)
+                {
+                        <div class="mt-4">
+                            <h4>Tax Number Information</h4>
+                            <dl class="row">
+                                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TaxNumber.TaxCode)</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.TaxNumber.TaxCode)</dd>
+
+                                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TaxNumber.TaxRatePercentage)</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.TaxNumber.TaxRatePercentage) %</dd>
+                            </dl>
+                        </div>
+                }
+            </dl>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

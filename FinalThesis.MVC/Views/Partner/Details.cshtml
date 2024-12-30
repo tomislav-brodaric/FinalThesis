@@ -1,0 +1,71 @@
+﻿@model FinalThesis.MVC.ViewModels.VMPartner
+
+@{
+    ViewData["Title"] = "Partner Details";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card mt-4 shadow-sm" style="max-width: 600px; width: 100%; border-radius: 10px;">
+        <div class="card-header bg-primary text-white" style="border-radius: 10px 10px 0 0;">
+            <h3 class="mb-0">@Html.DisplayFor(model => model.PartnerName)</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.CountryName)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.CountryName)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.PartnerTypeName)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.PartnerTypeName)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Note)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Note)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.CityName)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.CityName)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.AddressStreet)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.AddressStreet)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.AddressNumber)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.AddressNumber)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.BillingCityName)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.BillingCityName)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.BillingStreet)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.BillingStreet)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.BillingNumber)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.BillingNumber)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Phone)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Phone)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Fax)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Fax)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Mobile)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Mobile)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Email)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.WebAddress)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.WebAddress)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.ParentGLN)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.ParentGLN)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.BranchGLN)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.BranchGLN)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.BranchCode)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.BranchCode)</dd>
+            </dl>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.IDPartner }, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>

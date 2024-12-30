@@ -1,0 +1,194 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model FinalThesis.MVC.ViewModels.VMAdvanceInvoice
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "Adding new advance invoice";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="max-width: 800px; width: 100%;">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">@Localizer["AddingAdvInv"]</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["AdvInvNo"]</label>
+                    <input asp-for="AdvanceInvoiceNumber" class="form-control" />
+                    <span asp-validation-for="AdvanceInvoiceNumber" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["AdvInvDate"]</label>
+                    @* Set starting date *@
+                    <input asp-for="AdvanceInvoiceDate" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    <span asp-validation-for="AdvanceInvoiceDate" class="text-danger"></span>
+                </div>
+
+               <div class="mb-3">
+                    <label asp-for="PartnerID" class="form-label"></label>
+                    <select asp-for="PartnerID" class="form-select" asp-items="ViewBag.PartnerSelectList" onchange="showPartnerType()"></select>
+                    <span asp-validation-for="PartnerID" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["PurposeDescription"]</label>
+                    <input asp-for="PurposeDescription" class="form-control" />
+                    <span asp-validation-for="PurposeDescription" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label">@Localizer["InvAmount"]</label>
+                            <input asp-for="InvoiceAmount" class="form-control" />
+                            <span asp-validation-for="InvoiceAmount" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label">@Localizer["TransitionalItem"]</label>
+                            <input asp-for="TransitionalItem" class="form-control" />
+                            <span asp-validation-for="TransitionalItem" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label">@Localizer["ExemptFromVAT"]</label>
+                            <input asp-for="ExemptFromVAT" class="form-control" />
+                            <span asp-validation-for="ExemptFromVAT" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>@Localizer["InvBasesAndVAT"]</h5>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="form-label">@Localizer["Base"] 0%</label>
+                        <input asp-for="Base0" class="form-control" />
+                        <span asp-validation-for="Base0" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">@Localizer["Base"] 5%</label>
+                        <input asp-for="Base5" class="form-control" />
+                        <span asp-validation-for="Base5" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">@Localizer["PDV"] 5%</label>
+                        <input asp-for="PDV5" class="form-control" />
+                        <span asp-validation-for="PDV5" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div class="col-md-4">
+                        <label class="form-label">@Localizer["Base"] 13%</label>
+                        <input asp-for="Base13" class="form-control" />
+                        <span asp-validation-for="Base13" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">@Localizer["PDV"] 13%</label>
+                        <input asp-for="PDV13" class="form-control" />
+                        <span asp-validation-for="PDV13" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">@Localizer["Base"] 25%</label>
+                        <input asp-for="Base25" class="form-control" />
+                        <span asp-validation-for="Base25" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div class="col-md-4">
+                        <label class="form-label">@Localizer["PDV"] 25%</label>
+                        <input asp-for="PDV25" class="form-control" />
+                        <span asp-validation-for="PDV25" class="text-danger"></span>
+                    </div>
+                </div>
+
+@*                 <div class="mb-3">
+                    <label asp-for="ExemptionID" class="form-label"></label>
+                    <select asp-for="ExemptionID" class="form-select" asp-items="ViewBag.Exemptions"></select>
+                    <span asp-validation-for="ExemptionID" class="text-danger"></span>
+                </div> *@
+                <br />
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["Notes"]</label>
+                    <textarea asp-for="Notes" class="form-control"></textarea>
+                    <span asp-validation-for="Notes" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">@Localizer["PostingDescription"]</label>
+                    <input asp-for="PostingDescription" class="form-control" />
+                    <span asp-validation-for="PostingDescription" class="text-danger"></span>
+                </div>
+
+                <h5>@Localizer["Payments"]</h5>
+                <table class="table" id="paymentsTable">
+                    <thead>
+                        <tr>
+                            <th>@Localizer["Date"]</th>
+                            <th>@Localizer["Amount"]</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Placeholder for payment rows -->
+                    </tbody>
+                </table>
+
+                <button type="button" class="btn btn-secondary mb-3" id="addPaymentRow">@Localizer["AddPayment"]</button>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">@Localizer["BackToList"]</a>
+                    <button type="submit" class="btn btn-primary">@Localizer["Add"]</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        $(document).ready(function () {
+            function addNewPaymentRow(payment = {}) {
+                const rowHtml = `
+                            <tr>
+                                <td><input type="date" name="AdvanceInvoicePayments[0].PaymentDate" class="form-control" value="${payment.PaymentDate || ''}" required /></td>
+                                <td><input type="number" name="AdvanceInvoicePayments[0].Amount" class="form-control" value="${payment.Amount || ''}" required /></td>
+                                <td><button type="button" class="btn btn-danger removePayment">Remove</button></td>
+                            </tr>`;
+
+                $('#paymentsTable tbody').append(rowHtml);
+                updatePaymentIndex();
+            }
+
+            $('#addPaymentRow').on('click', function () {
+                addNewPaymentRow();
+            });
+
+            $(document).on('click', '.removePayment', function () {
+                $(this).closest('tr').remove();
+                updatePaymentIndex();
+            });
+
+            function updatePaymentIndex() {
+                $('#paymentsTable tbody tr').each(function (index) {
+                    $(this).find('input').each(function () {
+                        var name = $(this).attr('name').replace(/\d+/g, index);
+                        $(this).attr('name', name);
+                    });
+                });
+            }
+        });
+    </script>
+}

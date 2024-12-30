@@ -1,0 +1,29 @@
+﻿@model FinalThesis.MVC.ViewModels.VMInvoice
+
+@{
+    ViewData["Title"] = "Delete Invoice";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card mt-4 shadow-sm" style="max-width: 600px; width: 100%; border-radius: 10px;">
+        <div class="card-header bg-danger text-white">
+            <h4>Are you sure you want to delete Invoice #@Model.InvoiceNumber?</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">Invoice Date</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.InvoiceDate)</dd>
+
+                @* <dt class="col-sm-4">Partner</dt> *@
+                @* <dd class="col-sm-8">@Html.DisplayFor(model => model.Partner.PartnerName)</dd> *@
+            </dl>
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="IDInvoice" />
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

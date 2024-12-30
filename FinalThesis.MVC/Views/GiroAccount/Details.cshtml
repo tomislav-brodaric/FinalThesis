@@ -1,0 +1,25 @@
+﻿@model FinalThesis.MVC.ViewModels.VMGiroAccount
+
+@{
+    ViewData["Title"] = "Giro account details";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card mt-4 shadow-sm" style="max-width: 600px; width: 100%; border-radius: 10px;">
+        <div class="card-header bg-primary text-white" style="border-radius: 10px 10px 0 0;">
+            <h3 class="mb-0">@Html.DisplayFor(model => model.AccountName)</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Iban)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Iban)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Bank.BankName)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Bank.BankName)</dd>
+            </dl>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-secondary">Back to list</a>
+        </div>
+    </div>
+</div>

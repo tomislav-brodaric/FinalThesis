@@ -1,0 +1,33 @@
+﻿@model FinalThesis.MVC.ViewModels.VMTaxNumber
+
+@{
+    ViewData["Title"] = "Delete tax number";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="max-width: 600px; width: 100%;">
+        <div class="card-header bg-danger text-white">
+            <h4>Are you sure you want to delete this tax number?</h4>
+        </div>
+        <div class="card-body">
+            <h3>@Html.DisplayFor(model => model.TaxCode)</h3>
+            <div class="p-3 border rounded">
+                <dl class="row">
+                    <dt class="col-sm-7">@Html.DisplayNameFor(model => model.TaxCode):</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.TaxCode)</dd>
+
+                    <dt class="col-sm-7">@Html.DisplayNameFor(model => model.TaxRate.TaxRateName):</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.TaxRate.TaxRateName)</dd>
+
+                    <dt class="col-sm-7">@Html.DisplayNameFor(model => model.TaxRatePercentage):</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.TaxRatePercentage)</dd>
+                </dl>
+            </div>
+            <form asp-action="Delete" class="d-flex justify-content-between mt-3">
+                <input type="hidden" asp-for="IDTaxNumber" />
+                <a asp-action="Index" class="btn btn-secondary">Back to list</a>
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </form>
+        </div>
+    </div>
+</div>

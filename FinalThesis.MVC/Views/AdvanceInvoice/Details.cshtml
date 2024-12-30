@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model FinalThesis.MVC.ViewModels.VMAdvanceInvoice
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "Advance Invoice Details";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card mt-4 shadow-sm" style="max-width: 800px; width: 100%; border-radius: 10px;">
+        <div class="card-header bg-primary text-white" style="border-radius: 10px 10px 0 0;">
+            <h3 class="mb-0">@Html.DisplayFor(model => model.AdvanceInvoiceNumber)</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-5">@Localizer["AdvInvDate"]</dt>
+                <dd class="col-sm-7">@Html.DisplayFor(model => model.AdvanceInvoiceDate)</dd>
+
+                <dt class="col-sm-5">@Localizer["PartnerName"]</dt>
+                <dd class="col-sm-7">@Model.Partner?.PartnerName</dd>
+
+                <dt class="col-sm-5">@Localizer["PurposeDescription"]</dt>
+                <dd class="col-sm-7">@Html.DisplayFor(model => model.PurposeDescription)</dd>
+
+                <dt class="col-sm-5">@Localizer["InvAmount"]</dt>
+                <dd class="col-sm-7">@Html.DisplayFor(model => model.InvoiceAmount)</dd>
+
+                <dt class="col-sm-5">@Localizer["TransitionalItem"]</dt>
+                <dd class="col-sm-7">@Html.DisplayFor(model => model.TransitionalItem)</dd>
+
+                <dt class="col-sm-5">@Localizer["ExemptFromVAT"]</dt>
+                <dd class="col-sm-7">@Html.DisplayFor(model => model.ExemptFromVAT)</dd>
+
+                <dt class="col-sm-5">@Localizer["Notes"]</dt>
+                <dd class="col-sm-7">@Html.DisplayFor(model => model.Notes)</dd>
+
+                <dt class="col-sm-5">@Localizer["PostingDescription"]</dt>
+                <dd class="col-sm-7">@Html.DisplayFor(model => model.PostingDescription)</dd>
+            </dl>
+
+            <div class="mt-4">
+                <h4>Invoice Bases and VAT</h4>
+                <dl class="row">
+                    <dt class="col-sm-5">@Localizer["Base"] 0%</dt>
+                    <dd class="col-sm-7">@Html.DisplayFor(model => model.Base0)</dd>
+
+                    <dt class="col-sm-5">@Localizer["Base"] 5%</dt>
+                    <dd class="col-sm-7">@Html.DisplayFor(model => model.Base5)</dd>
+
+                    <dt class="col-sm-5">@Localizer["VAT"] 5%</dt>
+                    <dd class="col-sm-7">@Html.DisplayFor(model => model.PDV5)</dd>
+
+                    <dt class="col-sm-5">@Localizer["Base"] 13%</dt>
+                    <dd class="col-sm-7">@Html.DisplayFor(model => model.Base13)</dd>
+
+                    <dt class="col-sm-5">@Localizer["VAT"] 13%</dt>
+                    <dd class="col-sm-7">@Html.DisplayFor(model => model.PDV13)</dd>
+
+                    <dt class="col-sm-5">@Localizer["Base"] 25%</dt>
+                    <dd class="col-sm-7">@Html.DisplayFor(model => model.Base25)</dd>
+
+                    <dt class="col-sm-5">@Localizer["VAT"] 25%</dt>
+                    <dd class="col-sm-7">@Html.DisplayFor(model => model.PDV25)</dd>
+                </dl>
+            </div>
+
+            <div class="mt-4">
+                <h4>@Localizer["Payments"]</h4>
+                @if (Model.AdvanceInvoicePayments != null && Model.AdvanceInvoicePayments.Any())
+                {
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>@Localizer["Date"]</th>
+                                <th>@Localizer["Amount"]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var payment in Model.AdvanceInvoicePayments)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(_ => payment.PaymentDate)</td>
+                                    <td>@Html.DisplayFor(_ => payment.Amount)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>@Localizer["NoPayments"]</p>
+                }
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-secondary">@Localizer["BackToList"]</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@model FinalThesis.MVC.ViewModels.VMPartner
+
+@{
+    ViewData["Title"] = "Delete Partner";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="max-width: 600px; width: 100%;">
+        <div class="card-header bg-danger text-white">
+            <h4>Are you sure you want to delete this partner?</h4>
+        </div>
+        <div class="card-body">
+            <h3>@Html.DisplayFor(model => model.PartnerName)</h3>
+            <div class="p-3 border rounded">
+                <dl class="row">
+                    <dt class="col-sm-7">@Html.DisplayName("Country"):</dt>
+                    <dd class="col-sm-5">@Model.CountryName</dd>
+
+                    <dt class="col-sm-7">@Html.DisplayName("Partner Type"):</dt>
+                    <dd class="col-sm-5">@Model.PartnerTypeName</dd>
+
+                    <dt class="col-sm-7">@Html.DisplayName("City"):</dt>
+                    <dd class="col-sm-5">@Model.CityName</dd>
+
+                    <dt class="col-sm-7">@Html.DisplayNameFor(model => model.AddressStreet):</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.AddressStreet)</dd>
+
+                    <dt class="col-sm-7">@Html.DisplayNameFor(model => model.AddressNumber):</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.AddressNumber)</dd>
+
+                    <dt class="col-sm-7">@Html.DisplayName("Billing City"):</dt>
+                    <dd class="col-sm-5">@Model.BillingCityName</dd>
+
+                    <dt class="col-sm-7">@Html.DisplayNameFor(model => model.Phone):</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.Phone)</dd>
+
+                    <dt class="col-sm-7">@Html.DisplayNameFor(model => model.Email):</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.Email)</dd>
+
+                    <dt class="col-sm-7">@Html.DisplayNameFor(model => model.WebAddress):</dt>
+                    <dd class="col-sm-5">@Html.DisplayFor(model => model.WebAddress)</dd>
+                </dl>
+            </div>
+            <form asp-action="Delete" class="d-flex justify-content-between mt-3">
+                <input type="hidden" asp-for="IDPartner" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </form>
+        </div>
+    </div>
+</div>
